@@ -4,10 +4,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
-import com.davayposmotrim.aston_intensiv_1.MusicService
+import androidx.appcompat.app.AppCompatActivity
 import com.dvbuslaev.aston_intensiv_1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
