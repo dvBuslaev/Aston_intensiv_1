@@ -34,7 +34,15 @@ class MainActivity : AppCompatActivity() {
         //setup click listeners
         with(binding) {
             play.setOnClickListener {
+                if (!isBound) {
+
+                    startService(Intent(this@MainActivity, MusicService::class.java))
+                    bindService(Intent(this@MainActivity, MusicService::class.java), connection, Context.BIND_AUTO_CREATE)
+                    isBound = true
+
+                }
                 startMusic()
+
             }
             stop.setOnClickListener {
                 stopMusic()
@@ -42,12 +50,6 @@ class MainActivity : AppCompatActivity() {
             prev.setOnClickListener { prevSong() }
             next.setOnClickListener { nextSong() }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val intent = Intent(this, MusicService::class.java)
-        bindService(intent, connection, Context.BIND_AUTO_CREATE)
     }
 
 
@@ -75,4 +77,6 @@ class MainActivity : AppCompatActivity() {
             isBound = false
         }
     }
+
+
 }
